@@ -1,0 +1,46 @@
+.misson {
+    &__tabul {
+        @extend %border-none, %mb-30;
+        li {
+            .lab-btn {
+                border: none;
+                background-color: $white-color;
+                @extend %title-color, %m-5;
+                &.active, &:hover {
+                    @extend %white-color;
+                    background-color: $theme-color;
+                }
+            }
+        }
+    }
+    &__inner {
+        @extend %flex;
+    }
+    &__thumb {
+        @extend %w-100;
+        @include breakpoint(lg) {
+            width: calc(100% / 2);
+        }
+        img {
+            @extend %w-100;
+        }
+    }
+    &__content {
+        @extend %w-100, %bg-white;
+        padding: 30px;
+        @include breakpoint(lg) {
+            width: calc(100% / 2);
+        }
+        ul {
+            li {
+                padding-block: 5px;
+                i {
+                    @extend %mr-5, %theme-color;
+                }
+            }
+        }
+        .lab-btn {
+            @extend %mt-30;
+        }
+    }
+}

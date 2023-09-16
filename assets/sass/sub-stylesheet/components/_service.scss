@@ -1,0 +1,220 @@
+.service {
+    &--one {
+        .service {
+            &__item {
+                @extend %bg-white;
+                padding: 30px;
+                @include transition($transition);
+                &:hover {
+                    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+                    h5 {
+                        a {
+                            @extend %theme-color;
+                        }
+                    }
+                }
+                h5 {
+                    a {}
+                }
+                img {
+                    margin-block: 15px;
+                    @extend %w-100;
+                }
+                p {
+                    @extend %mb-0;
+                }
+            }
+        }
+    }
+    &--two {
+        .service {
+            &__slider {
+                padding-block: 10px;
+            }
+            &__item {
+                @extend %bg-white;
+                padding: 60px 30px;
+                @include transition($transition);
+                &:hover {
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                    .service {
+                        &__thumb {
+                            img {
+                                transform: scaleX(-1);
+                            }
+                        }
+                        &__content {
+                            h5 {
+                                a {
+                                    @extend %theme-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &__thumb {
+                @extend %mb-30;
+            }
+            &__content {
+                h5 {
+                    @extend %mb-15;
+                }
+                p {
+                    @extend %mb-0;
+                }
+            }
+            &__pagination {
+                span {
+                    width: 24px;
+                    height: 24px;
+                    line-height: 24px;
+                    opacity: 1;
+                    @extend %m-5, %bg-title, %white-color, %text-700;
+                    @include font-size(13px);
+                    @include transition($transition);
+                    &.swiper-pagination-bullet-active {
+                        @extend %bg-theme;
+                    }
+                }
+            }
+        }
+    }
+    &--three {
+        .sertab {
+            gap: 15px;
+            border-bottom: none;
+            @extend %mb-30;
+            &__item {
+                width: 140px;
+                padding-block: 20px;
+                border-bottom: 2px solid transparent;
+                @extend %bg-white, %text-center, %pointer;
+                @include transition($transition);
+                @include breakpoint(sm) {
+                    width: 170px;
+                }
+                &.active {
+                    border-color: $theme-color;
+                    .sertab__content p {
+                        @extend %theme-color;
+                    }
+                }
+            }
+            &__thumb {
+                @extend %mb-10;
+            }
+            &__content {
+                p {
+                    @extend %mb-0, %text-700, %title-color;
+                    @include transition($transition);
+                }
+            }
+        }
+        .sertabcontent {
+            @extend %p-30, %bg-white;
+            &__thumb {
+                img {
+                    @extend %w-100;
+                }
+            }
+            &__content {
+                h2 {
+                    @extend %mb-15;
+                }
+                h3 {
+                    @extend %mb-15;
+                }
+                p {
+                    @extend %mb-20;
+                }
+                ul {
+                    li {
+                        padding-block: 7px;
+                        i {
+                            @extend %mr-5;
+                        }
+                    }
+                }
+                .lab-btn {
+                    @extend %mt-30;
+                }
+            }
+        }
+        .service {
+            .sertab {
+                li {}
+                &__thumb {}
+                &__content {}
+            }
+        }
+    }
+    &--details {
+        .service {
+            &__maincontent {
+                h4 {
+                    margin-block: 15px;
+                }
+                img {
+                    @extend %mb-15;
+                }
+                ul {
+                    li {
+                        padding-block: 7px;
+                        i {
+                            @extend %mr-5;
+                        }
+                    }
+                }
+                .feature {
+                    padding-block: 30px;
+                    &__thumb {
+                        img {
+                            margin-bottom: 0;
+                        }
+                    }
+                    &__content {
+                        h5 {
+                            @include font-size(16px);
+                        }
+                    }
+                }
+                .team {
+                    padding-block: 30px;
+                    &__thumb {
+                        img {
+                            @extend %mb-0;
+                        }
+                    }
+                }
+                // @extend %p-30, %bg-white;
+                // img {
+                //     @extend %mb-15, %w-100, %h-100;
+                //     object-fit: cover;
+                //     object-position: center;
+                // }
+                // form {
+                //     @extend %mt-30;
+                //     input, textarea {
+                //         @extend %bg-body;
+                //     }
+                //     .lab-btn {
+                //         @extend %border-none;
+                //     }
+                // }
+            }
+        }
+    }
+}
+
+// @supports ((-webkit-backface-visibility: hidden) or (backface-visibility: hidden)) {
+//     .service__item:hover .service__front {
+//         visibility: unset; 
+//     } 
+// }
+
+// @supports ((-webkit-backface-visibility: hidden) or (backface-visibility: hidden)) {
+//     .service__item:hover .service__back {
+//         visibility: unset; 
+//     } 
+// }

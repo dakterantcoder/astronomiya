@@ -1,0 +1,204 @@
+.history {
+    .section__header {
+        max-width: 850px;
+    }
+    .section__wrapper {
+        @extend %flex;
+    }
+    &__item {
+        @include breakpoint(max-sm) {
+            width: 100%;
+        }
+        @include breakpoint(sm) {
+            @include breakpoint(max-lg) {
+                width: 50%;
+            }
+        }
+        &:last-child {
+            .history__year > span::before {
+                display: none;
+            }
+        }
+    }
+    &__inner {
+        @extend %flex, %align-items-center, %rel;
+        margin-block: 15px;
+        @include breakpoint(max-lg) {
+            margin: 15px;
+        }
+        &:hover {
+            .history {
+                &__thumb {
+                    img {
+                        @include transform(scale(1.1));
+                    }
+                }
+                &__year {
+                    &::after {
+                        @extend %bg-theme;
+                    }
+                    >span {
+                        &::after {
+                            background-color: $theme-color;
+                        }
+                        span {
+                            @extend %theme-color;
+                            @include breakpoint(lg) {
+                                color: $white-color;
+                            }
+                        }
+                    }
+                }
+                &__content {
+                    h4 {
+                        @extend %theme-color;
+                    }
+                }
+            }
+        }
+    }
+    &__thumb {
+        @extend %hidden;
+        @include breakpoint(lg) {
+            width: 35%;
+        }
+        img {
+            @extend %w-100;
+        }
+    }
+    &__year {
+        @extend %text-center, %rel;
+        @include breakpoint(lg) {
+            width: 20%;
+        }
+        &::after {
+            @extend %abs;
+            @include transition($transition);
+            @include transform(translate(-50%, -50%) rotate(-45deg));
+            width: 96px;
+            height: 96px;
+            top: 50%;
+            left: 50%;
+            border: 1px solid $theme-color;
+            background-color: $white-color;
+            @include breakpoint(max-lg) {
+                display: none;
+            }
+        }
+        >span {
+            @extend %rel, %d-inline-block;
+            z-index: 1;
+            @include breakpoint(max-lg) {
+                padding: 5px 20px;
+                background-color: $white-color;
+                position: absolute;
+                top: -55px;
+                left: 15px;
+            }
+            &::after {
+                @extend %abs;
+                @include transition($transition);
+                @include transform(translate(-50%, -50%) rotate(-45deg));
+                width: 90px;
+                height: 90px;
+                top: 50%;
+                left: 50%;
+                border: 1px solid $theme-color;
+                background-color: $white-color;
+                @include breakpoint(max-lg) {
+                    display: none;
+                }
+            }
+            &::before {
+                @extend %abs;
+                bottom: -125px;
+                left: 50%;
+                height: 100px;
+                width: 15px;
+                background-color: $theme-color;
+                @include transform(translateX(-50%));
+                @include breakpoint(max-lg) {
+                    display: none;
+                }
+            }
+            span {
+                z-index: 1;
+                @extend %rel, %text-700, %theme-color;
+                @include font-size(20px);
+                @include transition($transition);
+            }
+        }
+    }
+    &__content {
+        padding-top: 20px;
+        @include breakpoint(lg) {
+            width: 45%;
+            padding-top: 0;
+        }
+        h4 {
+            @include breakpoint(lg) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+    &--one {
+        .section__header {
+            h2 {
+                color: $white-color;
+            }
+        }
+        .history {
+            &__slider {
+                @extend %hidden;
+            }
+            &__top {
+                @extend %text-center, %rel, %pb-30, %mb-30;
+                .dotshape {
+                    @extend %abs, %bg-title;
+                    width: 14px;
+                    height: 14px;
+                    top: calc(100% - 7px);
+                    left: 50%;
+                    z-index: 1;
+                    border: 1px solid $white-color;
+                    @include border-radius(100%);
+                    @include transform(translateX(-50%));
+                    &::after {
+                        @extend %abs, %bg-theme;
+                        width: 6px;
+                        height: 6px;
+                        top: 50%;
+                        left: 50%;
+                        @include transform(translate(-50%, -50%));
+                        @include border-radius(100%);
+
+                    }
+                }
+                &::after {
+                    @extend %abs, %bg-white;
+                    width: calc(100% + 30px);
+                    height: 1px;
+                    left: 0;
+                    bottom: 0;
+                    
+                }
+                p {
+                    @extend %white-color, %mb-0;
+                }
+            }
+            &__item {
+                width: 100%;
+            }
+            &__content {
+                @extend %w-100, %bg-white, %p-30, %text-center;
+                border-top: 2px solid $theme-color;
+                h4 {
+                    @extend %mb-10;
+                }
+                p {
+                    @extend %mb-0;
+                }
+            }
+        }
+    }
+}

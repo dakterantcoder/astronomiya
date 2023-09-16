@@ -1,0 +1,71 @@
+.contact {
+    .section__header {
+        @include breakpoint(xl) {
+            max-width: 650px;
+        }
+    }
+    &--one, &--two {
+        input, textarea {
+            // @extend %bg-white;
+        }
+    }
+    &--one {
+        .section {
+            &__header {
+                h2 {
+                    @extend %white-color;
+                }
+            }
+            &__wrapper {
+                input, textarea {
+                    @extend %white-color;
+                    background: rgba($title-color, $alpha: .8);
+                    &::placeholder {
+                        @extend %white-color;
+                    }
+                }
+                .lab-btn {
+                    &:hover {
+                        @extend %bg-theme;
+                    }
+                }
+            }
+        }
+    }
+    &--two {
+        .section__wrapper {
+            form {
+                input, textarea {
+                    background: $white-color;
+                }
+            }
+        }
+    }
+    &--three {
+        input, textarea {
+            @extend %bg-white;
+            border: 1px solid #EDF2F6;
+        }
+    }
+    &__item {
+        @extend %text-center, %bg-white;
+        padding: 60px 30px;
+    }
+    &__icon {
+        @extend %mb-30;
+    }
+    &__content {
+        h5 {
+            @extend %mb-20;
+        }
+        p {
+            @extend %mb-0;
+            span {
+                @extend %theme-color;
+            }
+            b {
+                @extend %d-block, %text-400;
+            }
+        }
+    }
+}

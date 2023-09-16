@@ -1,0 +1,38 @@
+.callAaction {
+    @extend %rel;
+    &::after {
+        @extend %abs;
+        width: 45%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        background-color: $theme-color;
+    }
+    &__form {
+        @extend %p-30;
+        background-color: $white-color;
+        @extend %rel;
+        z-index: 1;
+        h2 {
+            @extend %mb-30;
+        }
+        form {
+            @extend %flex;
+            @extend %justify-between;
+            input, .custom-select {
+                background-color: $bg-color;
+                @extend %mb-30;
+                @include breakpoint(sm) {
+                    width: calc(100% / 2 - 15px);
+                }
+            }
+            textarea {
+                background-color: $bg-color;
+                @extend %mb-30;
+            }
+            .lab-btn {
+                @extend %border-none;
+            }
+        }
+    }
+}

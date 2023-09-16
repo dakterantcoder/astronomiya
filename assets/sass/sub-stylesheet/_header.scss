@@ -1,0 +1,757 @@
+/*================*** Header Section Start Here     ***===================*/
+.header {
+    // &.header-fixed {
+    //     z-index: 999;
+    //     top: 0;
+    //     left: 0;
+    //     &.header {
+    //         &__top {}
+    //         &--one, &--three {
+    //             .header {
+    //                 &__top {
+    //                     margin-top: -45px;
+    //                 }
+    //             }
+    //         }
+    //         &--two {
+    //             .header {
+    //                 &__bottom {
+    //                     position: static;
+    //                     @extend %w-100;
+    //                     top: 0;
+    //                     z-index: 99;
+    //                     @include breakpoint(xl) {
+    //                         position: fixed;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &--three {
+    //             .header {
+    //                 &__bottom {
+    //                     @extend %w-100;
+    //                     top: 0;
+    //                     z-index: 99;
+    //                     @include breakpoint(xl) {
+    //                         position: fixed;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &--four {
+    //             .header {
+    //                 &__bottom {
+    //                     @extend %bg-title;
+    //                     &::after, &::before {
+    //                         display: block;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         &--innerpage {
+    //             .header {
+    //                 &__bottom {
+    //                     @extend %w-100;
+    //                     top: 0;
+    //                     z-index: 99;
+    //                     @include breakpoint(xl) {
+    //                         position: fixed;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    &__top {
+        @include transition($transition);
+    }
+    &__bottom {
+        padding-block: 22px;
+        @extend %bg-white;
+        // @include transition($transition);
+        &.header-fixed {
+            position: fixed;
+            top: 0;
+            @extend %w-100;
+            z-index: 999;
+            box-shadow: 0 0 3px rgba($title-color, $alpha: .2);
+            .header__ellepsis {
+                @extend %d-none;
+            }
+        }
+        .area {
+            @extend %flex;
+            @extend %justify-between;
+            @extend %align-items-center;
+            .logo {
+                @include breakpoint(max-sm) {
+                    max-width: 140px;
+                }
+                @include breakpoint(xl) {
+                    position: relative;
+                    z-index: 99;
+                }
+            }
+            .menu {
+                @extend %flex;
+                @extend %justify-between;
+                
+                @include breakpoint(max-xl) {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    width: 100%;
+                    left: 0;
+                    background-color: $white-color;
+                    z-index: 9999;
+                    padding-bottom: 30px;
+                    height: 400px;
+                    overflow-y: auto;
+                    &.active {
+                        display: inherit;
+                        padding-inline: 30px;
+                    }
+                }
+                ul {
+                    li {
+                        @extend %d-inline-block;
+                        @extend %rel;
+                        @include breakpoint(max-xl) {
+                            display: block;
+                            border-bottom: 1px solid rgba($title-color, $alpha: .1);
+                        }
+                        &:hover {
+                            >ul {
+                                @include breakpoint(xl) {
+                                    opacity: 1;
+                                    top: 100%;
+                                    visibility: visible;
+                                }
+                            }
+                        }
+                        a {
+                            padding: 15px 30px;
+                            @extend %text-700;
+                            @extend %d-block;
+                            @extend %title-color;
+                            @extend %text-capitalize;
+                        }
+                        ul {
+                            background-color: $title-color;
+                            @include breakpoint(max-xl) {
+                                display: none;
+                            }
+                            @include breakpoint(xl) {
+                                position: absolute;
+                                width: 220px;
+                                top: calc(100% + 30px);
+                                left: 0;
+                                @include transition($transition);
+                                opacity: 0;
+                                z-index: 999;
+                                box-shadow: 0 0 3px rgba($theme-color, $alpha: .1);
+                                visibility: hidden;
+                            }
+                            li {
+                                @extend %d-block;
+                                &:last-child {
+                                    >a {
+                                        // border: none;
+                                    }
+                                }
+                                &.menu-item-has-children {
+                                    a {
+                                        &::after, &::before {
+                                            background-color: $white-color;
+                                        }
+                                        
+                                        &::before {
+                                            right: 24px;
+                                        }
+                                        &::after {
+                                            right: 20px;
+                                        }
+                                    }
+                                }
+                                a {
+                                    font-size: 95%;
+                                    padding: 15px 30px;
+                                    border-bottom: 1px solid rgba($white-color, $alpha: .1);
+                                    @extend %white-color;
+                                    &:hover, &.active {
+                                        background-color: $theme-color;
+                                        color: $white-color;
+                                        &::after, &::before {
+                                            background-color: $white-color;
+                                        }
+                                    }
+                                }
+                                ul {
+                                    @include breakpoint(xl) {
+                                        left: 100%;
+                                        top: 0 !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .search_cart {
+                    @extend %mr-30;
+                    ul {
+                        li {
+                            padding: 10px 15px;
+                            @extend %rel, %pointer;
+                            &::after {
+                                @extend %abs;
+                                width: 1px;
+                                height: 100px;
+                                left: 0;
+                                top: -22px;
+                                border-right: 1px solid rgba($theme-color, $alpha: .1);
+                            }
+                            &:last-child {
+                                &::before {
+                                    @extend %abs;
+                                    width: 1px;
+                                    height: 100px;
+                                    right: 0;
+                                    top: -22px;
+                                    border-right: 1px solid rgba($theme-color, $alpha: .1);
+                                }
+                            }
+                            a {
+                                @extend %p-0, %d-inline-block;
+                            }
+                            img {}
+                            span {
+                                top: 0px;
+                                right: 10px;
+                                font-size: 15px;
+                                @extend %abs, %title-color, %text-700;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &--one {
+        top: 0;
+        left: 0;
+        @extend %w-100;
+        // background-color: $theme-color;
+        background-color: rgba($white-color, $alpha: .1);
+        z-index: 9999;
+        position: relative;
+        @include breakpoint(xl) {
+            position: fixed;
+            background-color: rgba($white-color, $alpha: .1);
+        }
+        
+        .container-fluid {
+            @include breakpoint(xxl) {
+                padding-inline: 140px;
+            }
+        }
+        .header {
+            &__top {
+                border-bottom: 1px solid rgba($white-color, $alpha: .1);
+                background-color: $title-color;
+                @include breakpoint(max-xl) {
+                    display: none;
+                }
+                .info {
+                    @include breakpoint(max-xl) {
+                        border-bottom: 1px solid rgba($white-color, $alpha: .1);
+                    }
+                    ul {
+                        @include breakpoint(max-xl) {
+                            text-align: center;
+                        }
+                        li {
+                            @extend %d-inline-block, %white-color;
+                            padding: 10px 25px;
+                            border-left: 1px solid rgba($white-color, $alpha: .1);
+                            @include breakpoint(max-xl) {
+                                &:first-child {
+                                    border-left: none;
+                                }
+                            }
+                            @include breakpoint(max-sm) {
+                                border: none;
+                            }
+                        }
+                    }
+                }
+                .social {
+                    @include breakpoint(max-xl) {
+                        text-align: center;
+                    }
+                    li {
+                        @extend %d-inline-block, %white-color;
+                        padding: 10px 30px;
+                        border-left: 1px solid rgba($white-color, $alpha: .1);
+                        @include breakpoint(max-xl) {
+                            &:first-child {
+                                border-left: none;
+                            }
+                        }
+                        @include breakpoint(max-sm) {
+                            border: none;
+                        }
+                    }
+                }
+            }
+            &__bottom {
+                @extend %bg-theme, %rel;
+                @include breakpoint(xl) {
+                    background: $white-color;
+                    &::after {
+                        position: absolute;
+                        content: "";
+                        top: 0;
+                        left: 325px;
+                        border-top: 100px solid $theme-color;
+                        border-right: 105px solid transparent;
+                        @include breakpoint(xl) {
+                            @include breakpoint(max-xxl) {
+                                left: 245px;
+                                border-right: 60px solid transparent;
+                            }
+                        }
+                    }
+                    &::before {
+                        position: absolute;
+                        content: "";
+                        top: 0;
+                        left: 0;
+                        background: $theme-color;
+                        width: 325px;
+                        height: 100%;
+                        @include breakpoint(xl) {
+                            @include breakpoint(max-xxl) {
+                                width: 245px;
+                            }
+                        }
+                        
+                    }
+                }
+                .menu {
+                    .lab-btn {
+                        @extend %mt-30;
+                        @include breakpoint(xl) {
+                            margin-top: 0;
+                            @include breakpoint(max-xxl) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &__bar {
+                span {
+                    background-color: $white-color;
+                }
+            }
+        }
+    }
+    &--two {
+        .header {
+            &__top {
+                @extend %bg-title;
+                @include breakpoint(max-xl) {
+                    padding-block: 15px;
+                }
+                .info {
+                    ul {
+                        @extend %flex;
+                        @include breakpoint(xl) {
+                            justify-content: flex-end;
+                        }
+                        li {
+                            @extend %flex, %align-items-center;
+                            padding: 15px 30px;
+                        }
+                    }
+                    &__icon {
+                        width: 30px;
+                    }
+                    &__content {
+                        width: calc(100% - 30px);
+                        @extend %pl-15;
+                        p {
+                            @extend %white-color, %mb-0;
+                            b {
+                                @extend %theme-color;
+                            }
+                        }
+                    }
+                }
+                .header__bar span {
+                    background: $white-color;
+                }
+                .header__cartcount i, .header__cartcount span {
+                    color: $white-color;
+                }
+            }
+            &__bottom {
+                @include transition($transition);
+                // &::after {
+                //     @extend %d-none;
+                // }
+                @include breakpoint(max-xl) {
+                    padding: 0;
+                    &.header-fixed {
+                        position: static !important;
+                    }
+                }
+                .area {
+                    .main-menu {
+                        @extend %justify-between, %w-100;
+                        @include breakpoint(max-xl) {
+                            position: relative;
+                            .menu {
+                                background: $white-color;
+                            }
+                        }
+                        .menu {
+                            ul {
+                                li {
+                                    a {
+                                        @extend %title-color;
+                                        &::after, &::before {
+                                            @extend %bg-title;
+                                        }
+                                    }
+                                    ul {
+                                        li {
+                                            a {
+                                                @extend %white-color;
+                                                &::after, &::before {
+                                                    @extend %bg-white;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .lab-btn {
+                                @extend %mt-30;
+                                @include breakpoint(xl) {
+                                    margin-top: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &--three {
+        @include breakpoint(xl) {
+            position: static;
+            background-color: rgba($white-color, $alpha: .1);
+        }
+        .header {
+            &__top {
+                .social {
+                    @include breakpoint(max-xl) {
+                        text-align: center;
+                    }
+                    li {
+                        padding: 10px 15px;
+                        a {
+                            @extend %d-inline-block;
+                            i {
+                                width: 18px;
+                                height: 18px;
+                                line-height: 19px;
+                                margin-right: 3px;
+                                @include font-size(10px);
+                                @include border-radius(100%);
+                                @extend %d-inline-block, %bg-theme, %white-color, %text-center;
+                                @include breakpoint(xl) {
+                                    @include breakpoint(max-xxl) {
+                                        display: none;
+                                    }
+                                }
+                            }
+                            span {
+                                @extend %white-color;
+                            }
+                        }
+                    }
+                }
+            }
+            &__bottom {
+                background: $body-color;
+                @include breakpoint(xl) {
+                    &::after, &::before {
+                        display: none;
+                    }
+                }
+            }
+            &__bar {
+                span {
+                    background: $title-color;
+                }
+            }
+            &__ellepsis {
+                i {
+                    @extend %title-color;
+                }
+            }
+        }
+    }
+    &--four {
+        @include breakpoint(xl) {
+            // position: static;
+            background-color: rgba($white-color, $alpha: .1);
+        }
+        .header {
+            &__bottom {
+                @include breakpoint(xl) {
+                    background: transparent;
+                    &::after, &::before {
+                        display: none;
+                    }
+                }
+                &.header-fixed {
+                    @include breakpoint(xl) {
+                        background: rgba($title-color, $alpha: .85);
+                    }
+                }
+                .main-menu {
+                    .menu {
+                        @include breakpoint(max-xl) {
+                            background: $title-color;
+                        }
+                        ul {
+                            li {
+                                a {
+                                    @extend %white-color;
+                                    &::after, &::before {
+                                        @extend %bg-white;
+                                    }
+                                }
+                            }
+                        }
+                        .cart_icon {
+                            .cart_item_count {
+                                @extend %white-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &--innerpage {
+        @include breakpoint(xl) {
+            position: static;
+            background-color: rgba($white-color, $alpha: .1);
+        }
+        .header {
+            &__bottom {
+                @include breakpoint(max-xl) {
+                    background: $ash-color;
+                }
+                &::after, &::before {
+                    @extend %d-none;
+                }
+            }
+            &__bar {
+                span {
+                    background-color: $title-color;
+                }
+            }
+            &__ellepsis {
+                i {
+                    @extend %title-color;
+                }
+            }
+        }
+    }
+    &__bararea {
+        @extend %flex;
+        @extend %align-items-center;
+    }
+    &__bar {
+        @extend %rel;
+        @extend %pointer;
+        width: 25px;
+        height: 20px;
+        @extend %ml-20;
+    
+        span {
+            @extend %abs;
+            @extend %d-inline-block;
+            @extend %w-100, %bg-title;
+            height: 3px;
+            @include transition($transition);
+            background-color: $white-color;
+            left: 0;
+    
+            &:first-child {
+                top: 0;
+            }
+    
+            &:nth-child(2) {
+                top: 52%;
+                transform: translateY(-65%);
+            }
+    
+            &:last-child {
+                bottom: 0;
+            }
+        }
+    
+        &.active {
+            span {
+                &:first-child {
+                    @include transform(rotate(45deg) translate(3px, 9px));
+                }
+    
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+    
+                &:last-child {
+                    @include transform(rotate(-45deg) translate(3px, -9px));
+                }
+            }
+        }
+    
+        @include breakpoint(max-sm) {
+            width: 15px;
+            height: 16px;
+    
+            span {
+                height: 2px;
+                width: 20px;
+            }
+    
+            &.active {
+                span {
+                    &:first-child {
+                        @include transform(rotate(45deg) translate(4px, 6px));
+                    }
+    
+                    &:nth-child(2) {
+                        opacity: 0;
+                    }
+    
+                    &:last-child {
+                        @include transform(rotate(-45deg) translate(4px, -6px));
+                    }
+                }
+            }
+        }
+    }
+    &__ellepsis {
+        font-size: 20px;
+        margin-left: 25px;
+
+        i {
+            @extend %pointer;
+            color: $white-color;
+        }
+    }
+    &__cartcount {
+        @extend %p-rel;
+        i {
+            color: $white-color;
+        }
+        span {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            top: -20px;
+            right: -10px;
+            font-size: 12px;
+            @include border-radius(100%);
+            @extend %abs, %text-center, %text-700, %white-color, %d-inline-block;
+        }
+    }
+
+}
+
+.menu-item-has-children {
+    >a {
+        @extend %rel;
+        &::after {
+            @extend %abs;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 25px;
+            width: 10px;
+            height: 2px;
+            background-color: $title-color;
+        }
+
+        &::before {
+            @extend %abs;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 29px;
+            width: 2px;
+            height: 10px;
+            background-color: $title-color;
+            @include transition($transition);
+        }
+
+        @include breakpoint(xl) {
+            &::after {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                width: 10px;
+                height: 2px;
+                background-color: $title-color;
+            }
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 4px;
+                width: 2px;
+                height: 10px;
+                background-color: $title-color;
+                @include transition($transition);
+            }
+        }
+
+
+    }
+
+    &:hover {
+        >a {
+            &:before {
+                @include breakpoint(xl) {
+                    transform: translate(-50%, -50%) rotate(90deg);
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    &.open {
+        >a {
+            &::after, &::before {
+                @extend %white-color;
+            }
+            &:before {
+                @include breakpoint(max-xl) {
+                    transform: translate(-50%, -50%) rotate(90deg);
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+
+/*================*** Header Section End Here     ***===================*/

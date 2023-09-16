@@ -1,0 +1,16 @@
+.sponsor {
+    &--one {
+        padding-block: 90px;
+    }
+    &--two {
+        padding-block: 90px;
+        @extend %bg-theme;
+    }
+    &__item {}
+    &__thumb {
+        @extend %text-center;
+        img {
+            @extend %w-100;
+        }
+    }
+}

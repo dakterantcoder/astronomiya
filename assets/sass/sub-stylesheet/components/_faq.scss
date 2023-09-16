@@ -1,0 +1,103 @@
+.faq {
+    .accordion {
+        &-item {
+            border: 1px solid #F2F6F9;
+    
+            &:not(:last-child) {
+                margin-block-end: 10px;
+            }
+        }
+    
+        &-button {
+            @include font-size(18px);
+            padding: 15px 20px;
+            font-weight: 700;
+            text-transform: capitalize;
+            border: none;
+            @extend %bg-white;
+            .accordion-icon {
+                @include add-prefix(transition, $transition);
+                width: 30px;
+                height: 30px;
+                @include font-size(16px);
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+                background-color: $theme-color;
+                color: $white-color;
+                margin-inline-end: 20px;
+    
+                @include breakpoint(md) {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+    
+            .accordion-headerText {
+                width: calc(100% - 50px - 3ch);
+            }
+    
+            &:not(.collapsed) {
+                border-bottom: none;
+                background-color: $white-color;
+                color: $theme-color;
+                box-shadow: none;
+    
+                &:after {
+                    background-color: $theme-color;
+                    @include add-prefix(transform, rotate(90deg));
+                }
+    
+                &:before {
+                    opacity: 0;
+                }
+    
+                .accordion-icon {
+                    background-color: $theme-color;
+                }
+            }
+    
+            &:focus {
+                box-shadow: none;
+            }
+            &:before,
+            &:after {
+                @include add-prefix(transition, $transition);
+                @extend %abs;
+                background-color: $theme-color;
+                background-image: none;
+            }
+    
+            &:after {
+                height: 20px;
+                width: 2px;
+                right: 30px;
+            }
+    
+            &:before {
+                right: 21px;
+                width: 20px;
+                height: 2px;
+            }
+            &.collapsed {
+                .accordion-icon {
+                    @extend %bg-title;
+                }
+                &::after, &::before {
+                    @extend %bg-title;
+                }
+            }
+        }
+        &-collapse {
+            @extend %bg-white;
+        }
+        &-body {
+            padding-inline-start: 2em;
+            padding-block-start: 0;
+            padding-inline-end: 30px;
+            @include breakpoint(sm) {
+                padding-inline-start: 5em;
+            }
+        }
+    }
+}

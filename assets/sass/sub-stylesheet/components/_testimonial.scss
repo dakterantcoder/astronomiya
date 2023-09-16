@@ -1,0 +1,198 @@
+.testimonial {
+    &__area {
+        margin-top: 120px;
+    }
+    .section__header {
+        @include breakpoint(lg) {
+            margin-right: 50px;
+        }
+        h2 {
+            @extend %white-color;
+        }
+    }
+    &__navigation {
+        @extend %flex;
+        @extend %mt-30;
+        .navi {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: rgba($white-color, $alpha: .3);
+            @extend %white-color;
+            @extend %m-5;
+            @extend %text-center;
+            @include transition($transition);
+            @include border-radius(100%);
+            &:hover {
+                background-color: $theme-color;
+            }
+        }
+    }
+    &__inner {
+        @extend %flex, %text-center, %rel;
+        background-color: $white-color;
+        padding: 30px 15px;
+        gap: 20px;
+        @include breakpoint(sm) {
+            padding-left: 0;
+            text-align: left;
+            padding: 30px;
+            gap: 60px;
+        }
+        &::after {
+            @extend %abs, %bg-theme;
+            width: 90px;
+            height: 100%;
+            left: -40px;
+            top: 0;
+            @include breakpoint(max-sm) {
+                display: none;
+            }
+        }
+    }
+    &__thumb {
+        width: 100%;
+        z-index: 1;
+        @include breakpoint(sm) {
+            width: 100px;
+            margin-left: -40px;
+        }
+        .thumb {
+            @extend %rel;
+            width: 120px;
+            @include breakpoint(max-sm) {
+                margin-inline: auto;
+            }
+        }
+    }
+    &__content {
+        width: 100%;
+        @extend %rel;
+        @include breakpoint(sm) {
+            width: calc(100% - 160px);
+
+        }
+        .name {
+            @extend %mb-10;
+            @include breakpoint(max-sm) {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            h5 {
+                @extend %mb-0;
+            }
+        }
+        .img {
+            @include breakpoint(max-sm) {
+                display: none;
+            }
+        }
+        p {
+            @extend %mb-20;
+        }
+        &--top {
+            @extend %flex, %justify-between;
+        }
+        .shapeimg {
+            @extend %abs;
+            right: 0;
+            bottom: -10px;
+        }
+        
+    }
+    &__rating {
+        @extend %flex, %align-items-center;
+        @include breakpoint(max-sm) {
+            justify-content: center;
+        }
+        .rating {
+            @extend %bg-title, %d-inline-block;
+            padding: 5px 10px;
+            i {
+                @extend %white-color;
+                @include font-size(14px);
+            }
+        }
+        span {
+            @extend %d-inline-block, %white-color, %bg-theme;
+            padding: 5px 10px;
+            
+        }
+    }
+    &--two {
+        .section__header {
+            max-width: 750px;
+        }
+        .testimonial {
+            &__inner {
+                @extend %flex;
+                gap: 0;
+                padding: 45px 30px;
+                @include breakpoint(sm) {
+                    // padding-left: 30px;
+                }
+                &::after {
+                    @extend %d-none;
+                }
+            }
+            &__thumb {
+                width: 100px;
+                margin-left: 0;
+                @include breakpoint(max-sm) {
+                    width: 100%;
+                    margin-bottom: 25px;
+                }
+                .thumb {
+                    @extend %rel;
+                    width: 100px;
+                    i {
+                        top: calc(100% - 20px);
+                        left: 50%;
+                        width: 44px;
+                        height: 44px;
+                        line-height: 44px;
+                        border: 3px solid $white-color;
+                        @extend %bg-theme, %white-color, %d-inline-block, %text-center, %abs;
+                        @include transform(translateX(-50%));
+                        @include border-radius(100%);
+                    }
+                }
+            }
+            &__content {
+                width: calc(100% - 0px);
+                @include breakpoint(sm) {
+                    padding-left: 30px;
+                    width: calc(100% - 100px);
+                }
+            }
+            &__author {
+                @extend %flex, %justify-between;
+                .name {
+                    @extend %mb-0;
+                }
+                .rating {
+                    @extend %theme-color;
+                    @include breakpoint(max-sm) {
+                        text-align: center;
+                        width: 100%;
+                        margin-top: 10px;
+                    }
+                }
+            }
+            &__pagination__two {
+                span {
+                    width: 24px;
+                    height: 24px;
+                    line-height: 24px;
+                    opacity: 1;
+                    @extend %m-5, %bg-white, %title-color, %text-700;
+                    @include font-size(13px);
+                    @include transition($transition);
+                    &.swiper-pagination-bullet-active {
+                        @extend %bg-theme, %white-color;
+                    }
+                }
+            }
+        }
+    }
+}

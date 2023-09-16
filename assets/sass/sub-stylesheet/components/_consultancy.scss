@@ -1,0 +1,42 @@
+.consultancy {
+    @extend %rel;
+    &::after {
+        @extend %abs, %h-100, %d-none;
+        top: 0;
+        width: 47%;
+        background: url(../../assets/images/consultancy/bg/01.jpg) no-repeat;
+        background-size: cover;
+        @include breakpoint(lg) {
+            display: block
+        }
+    }
+    &__contact {
+        @extend %p-30, %bg-white, %rel;
+        &::after {
+            @extend %abs, %w-100, %h-100;
+            top: 0;
+            right: 0;
+            background: url(../../assets/images/consultancy/bg/shape.png) no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        h2 {
+            @extend %mb-30, %rel;
+            z-index: 1;
+            @include breakpoint(max-sm) {
+                font-size: 24px;
+            }
+        }
+        form {
+            @extend %rel;
+            z-index: 1;
+        }
+        input, textarea {
+            @extend %bg-white;
+            border-color: rgba($border-color, $alpha: .8);
+        }
+        .lab-btn {
+            @extend %border-none;
+        }
+    }
+}

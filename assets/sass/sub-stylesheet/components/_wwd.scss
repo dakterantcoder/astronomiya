@@ -1,0 +1,112 @@
+.wwd {
+    &--one {
+        .wwd {
+            &__content {
+                h2 {
+                    @include breakpoint(xl) {
+                        max-width: 70%;
+                    }
+                    @include breakpoint(xxl) {
+                        max-width: 65%;
+                    }
+                }
+                .accordion {}
+                .accordion-item {
+                    @extend %mb-15;
+                    &:last-child {
+                        @extend %mb-0;
+                    }
+                    .accordion-header {
+                        .accordion-button {
+                            @extend %border-none, %bg-theme, %white-color, %text-700, %text-capitalize;
+                            border-radius: 0;
+                            box-shadow: none;
+                            &::after {
+                                @extend %white-color;
+                                content: '\f061';
+                                font-family: "Font Awesome 6 Free";
+                                background-image: none;
+                            }
+                            &.collapsed {
+                                @extend %bg-title;
+                            }
+                            &:not(.collapsed)::after {
+                                transform: rotate(90deg);
+                            }
+                        }
+                    }
+                    .accordion-collapse {
+                        border: 1px solid $theme-color;
+                        border-radius: 0;
+                        .accordion-body {}
+                    }
+                }
+            }
+        }
+    }
+    &--two {
+        @extend %rel;
+        &::after {
+            @extend %abs, %h-100;
+            width: 48%;
+            top: 0;
+            right: 0;
+            @include breakpoint(lg) {
+                background: url(../../assets/images/wwd/01.jpg) no-repeat;
+                background-size: cover;
+            }
+        }
+        .wwd {
+            &__content {
+                h2, p {
+                    @extend %white-color;
+                }
+                h2 {
+                    @include breakpoint(xl) {
+                        max-width: 70%;
+                    }
+                    @include breakpoint(xxl) {
+                        max-width: 65%;
+                    }
+                }
+                .accordion-item {
+                    @extend %mb-15;
+                    &:last-child {
+                        @extend %mb-0;
+                    }
+                    .accordion-header {
+                        .accordion-button {
+                            @extend %border-none, %bg-theme, %white-color, %text-700, %text-capitalize;
+                            border-radius: 0;
+                            box-shadow: none;
+                            &::after {
+                                @extend %white-color;
+                                content: '\f061';
+                                font-family: "Font Awesome 6 Free";
+                                background-image: none;
+                            }
+                            &.collapsed {
+                                @extend %bg-theme;
+                            }
+                            &:not(.collapsed)::after {
+                                transform: rotate(90deg);
+                            }
+                        }
+                    }
+                    .accordion-collapse {
+                        border: 1px solid $theme-color;
+                        border-radius: 0;
+                        @extend %bg-white;
+                        .accordion-body {
+                            p {
+                                @extend %title-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__thumb {}
+    &__content {}
+}

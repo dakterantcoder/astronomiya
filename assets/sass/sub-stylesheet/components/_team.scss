@@ -1,0 +1,341 @@
+.team {
+    &--one {
+        .team {
+            &__item {
+                @extend %p-15, %bg-white;
+                // box-shadow: 0px 0px 10px rgba(11, 34, 57, 0.1);
+                @include transition($transition);
+                &:hover {
+                    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+                    .team {
+                        &__thumb {
+                            &::after {
+                                opacity: 1;
+                            }
+                            ul {
+                                bottom: 10px;
+                            }
+                        }
+                        &__content {
+                            h5 {
+                                a {
+                                    @extend %theme-color;
+                                }
+                            }
+                            span {
+                                // @extend %white-color;
+                            }
+                        }
+                    }
+                }
+            }
+            &__inner {}
+            &__thumb {
+                @extend %rel, %hidden, %mb-15;
+                &::after {
+                    @extend %abs, %w-100, %h-100;
+                    @include transition($transition);
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    background: linear-gradient(180deg, rgba(11, 34, 57, 0) 44.12%, #0B2239 100%);
+                }
+                img {
+                    @extend %w-100;
+                }
+                ul {
+                    @extend %abs, %w-100, %text-center;
+                    bottom: -40px;
+                    left: 50%;
+                    z-index: 1;
+                    @include transform(translateX(-50%));
+                    @include transition($transition);
+                    li {
+                        @extend %d-inline-block;
+                        a {
+                            width: 30px;
+                            height: 30px;
+                            line-height: 26px;
+                            border-radius: 2px;
+                            @extend %text-center, %bg-white, %theme-color, %text-700, %d-inline-block, %m-5;
+                            i {
+                                width: 20px;
+                                height: 20px;
+                                line-height: 20px;
+                                border-radius: 100%;
+                                font-size: 10px;
+                                @extend %white-color, %bg-theme, %d-inline-block;
+                                @include transition($transition);
+                            }
+                            &:hover {
+                                @extend %bg-theme, %white-color;
+                                i {
+                                    @extend %bg-white, %theme-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &__content {
+                @extend %text-center;
+                padding-block: 5px;
+                h5 {
+                    @extend %mb-5;
+                    a {
+                        // @extend %title-color;
+                        @include transition($transition);
+                    }
+                }
+                span {
+                    @extend %d-inline-block;
+                    @include transition($transition);
+                }
+            }
+        }
+    }
+    &--two {
+        .team {
+            &__item {
+                @extend %bg-white, %p-30, %flex, %rel;
+                @include breakpoint(sm) {
+                    padding: 40px;
+                }
+                &::after {
+                    width: 140px;
+                    height: 140px;
+                    top: 0;
+                    left: 0;
+                    // opacity: 0;
+                    @extend %abs, %bg-title;
+                    @include transition($transition);
+                }
+                &:hover {
+                    &::after {
+                        @extend %bg-theme;
+                    }
+                    .team {
+                        &__thumb {
+                            &::after {
+                                @extend %bg-theme;
+                            }
+                        }
+                        &__content {
+                            h5 {
+                                a {
+                                    @extend %theme-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &__thumb {
+                @extend %w-100, %mb-30;
+                z-index: 1;
+                border: 6px solid $white-color;
+                filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
+                @include breakpoint(sm) {
+                    width: 40%;
+                    margin-bottom: 0;
+                }
+                img {
+                    object-fit: cover;
+                    @extend %w-100, %h-100;
+                }
+            }
+            &__content {
+                @extend %w-100;
+                @include breakpoint(sm) {
+                    width: 60%;
+                    padding-left: 30px;
+                }
+                h5 {
+                    @extend %mb-5;
+                    a {}
+                }
+                span {
+                    @extend %d-block, %mb-15;
+                }
+                p {
+                    @extend %mb-20;
+                    @include breakpoint(xxl) {
+                        max-width: 90%;
+                    }
+                }
+                ul {
+                    gap: 5px;
+                    @extend %flex;
+                    li {
+                        @extend %d-inline-block;
+                        a {
+                            width: 36px;
+                            height: 36px;
+                            line-height: 36px;
+                            border-radius: 100%;
+                            background: rgba($title-color, $alpha: .1);
+                            @extend %text-center, %title-color, %d-inline-block;
+                            @include transition($transition);
+                            &:hover {
+                                @extend %bg-theme, %white-color;
+                                @include transform(translateY(-5px));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &--three {
+        .team {
+            &__item {
+                @extend %bg-white;
+                @include transition($transition);
+                &:hover {
+                    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+                    .team {
+                        &__thumb {
+                            img {
+                                @include transform(scale(1.05));
+                            }
+                        }
+                        &__content {
+                            h5 {
+                                a {
+                                    @extend %theme-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &__inner {}
+            &__thumb {
+                @extend %hidden;
+                img {
+                    @extend %w-100;
+                }
+            }
+            &__content {
+                @extend %text-center, %p-30;
+                h5 {
+                    @extend %mb-5;
+                    a {
+                        @include transition($transition);
+                    }
+                }
+                span {
+                    @extend %d-inline-block;
+                    @include transition($transition);
+                }
+            }
+        }
+    }
+
+    &--deatils {
+        .section__wrapper {
+            // @extend %bg-white, %p-30;
+        }
+        .team {
+            &__left {
+                @extend %bg-white, %p-15;
+                border: 1px solid #F2F6F9;
+            }
+            &__thumb {
+                img {
+                    @extend %w-100;
+                }
+                &--info {
+                    @extend %mt-30;
+                    padding-inline: 15px;
+                    @include breakpoint(lg) {
+                        // padding-left: 30px;
+                    }
+                    span {
+                        @extend %text-capitalize;
+                    }
+                    ul {
+                        @extend %mt-20;
+                        li {
+                            @extend %flex;
+                            padding-block: 10px;
+                            .left {
+                                width: 90px;
+                                p {
+                                    @extend %mb-0, %title-color, %text-600, %text-capitalize;
+                                }
+                            }
+                            .right {
+                                width: calc(100% - 100px);
+                                @extend %pl-15, %rel;
+                                &::after {
+                                    @extend %abs;
+                                    content: ":";
+                                    left: 0;
+                                    top: 50%;
+                                    @include transform(translateY(-50%));
+                                }
+                                p {
+                                    @extend %mb-0;
+                                }
+                                ul {
+                                    @extend %mt-0;
+                                    li {
+                                        @extend %d-inline-block, %p-0;
+                                        a {
+                                            width: 32px;
+                                            height: 32px;
+                                            line-height: 32px;
+                                            border-radius: 100%;
+                                            @include font-size(14px);
+                                            @include transition($transition);
+                                            @extend %bg-body, %title-color, %d-inline-block, %text-center;
+                                            &:hover {
+                                                @extend %bg-theme, %white-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &.progressbararea {
+                            li {
+                                padding-block: 15px;
+                                .title {
+                                    @extend %w-100;
+                                    p {
+                                        @extend %mb-10;
+                                    }
+                                }
+                                .progress {
+                                    @extend %w-100;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &__content {
+                p {
+                    @extend %mb-30;
+                }
+            }
+        }
+        .feature {
+            &__content {
+                p {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .contact {
+            input, textarea {
+                background: $white-color !important;
+                color: $title-color;
+                &::placeholder {
+                    color: rgba($title-color, $alpha: .8);
+                }
+            }
+        }
+    }
+}

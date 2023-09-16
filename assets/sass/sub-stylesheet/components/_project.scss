@@ -1,0 +1,262 @@
+.project {
+   .section__header {
+    max-width: 750px;
+   }
+    &__item {
+        @extend %rel;
+        &:hover {
+            .project {
+                &__content {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    &__thumb {
+        img {
+            @extend %w-100;
+        }
+    }
+    &__content {
+        @extend %abs, %w-100, %h-100, %p-30;
+        background-color: rgba($title-color, $alpha: .9);
+        top: 0;
+        left: 0;
+        opacity: 0;
+        @include transition($transition);
+        h5 {
+            @extend %mb-5;
+            a {
+                @extend %white-color;
+            }
+        }
+        span {
+            @extend %white-color, %d-block, %text-capitalize;
+        }
+        &::after {
+            @extend %abs;
+            bottom: 0;
+            left: 0;
+            border-bottom: 120px solid $theme-color;
+            border-right: 120px solid transparent;
+        }
+    }
+    &__icon {
+        width: 56px;
+        height: 56px;
+        line-height: 52px;
+        border-radius: 100%;
+        margin-top: 185px;
+        z-index: 1;
+        border: 2px solid $theme-color;
+        @include transition($transition);
+        @extend %text-center, %theme-color, %bg-white, %d-inline-block, %rel;
+        &:hover {
+            // @extend %white-color, %bg-title;
+            img {
+                transform: rotate(90deg);
+            }
+        }
+        @include breakpoint(lg) {
+            @include breakpoint(max-xl) {
+                display: none;
+            }
+        }
+    }
+    &--one {
+        .project {
+            &__icon {
+                margin-top: 125px;
+            } 
+        }
+    }
+
+    &--two {
+        @extend %rel, %bg-title;
+        .section__header {
+            @extend %rel;
+            z-index: 2;
+            @include breakpoint(lg) {
+                margin-bottom: 0;
+            }
+            h2 {
+                @extend %white-color;
+            }
+            p {
+                @extend %mb-30, %white-color;
+                @include breakpoint(xl) {
+                    max-width: 90%;
+                }
+            }
+            .lab-btn {
+                &:hover {
+                    @extend %bg-white, %theme-color;
+                }
+            }
+        }
+        &::after {
+            @extend %abs, %h-100;
+            width: 39%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            @include breakpoint(lg) {
+                background-color: rgba($title-color, $alpha: 1);
+                @include breakpoint(max-xl) {
+                    width: 33%;
+                }
+            }
+            @include breakpoint(xl) {
+                @include breakpoint(max-xxl) {
+                    width: 35%;
+                }
+            }
+        }
+        &::before {
+            @extend %abs, %center;
+            background: url(../../assets/images/bg/01.png) no-repeat;
+            background-position: center;
+            z-index: 11;
+        }
+        .project {
+            &__item {}
+            &__thumb {
+                img {
+                    @extend %w-100;
+                }
+            }
+            &__content {
+                top: auto;
+                height: auto;
+                bottom: 0;
+                background-color: rgba($theme-color, $alpha: .9);
+                @extend %p-30;
+                &::after {
+                    @extend %d-none;
+                }
+            }
+            &__icon {
+                @extend %mt-0, %abs;
+                top: 50%;
+                right: 30px;
+                @include transform(translateY(-50%));
+            }
+        }
+    }
+    &--three {
+        .project {
+            &__item {}
+            &__icon {
+                margin-top: 125px;
+            }
+        }
+    }
+    &--four {
+        .project {
+            &__item {
+                &:hover {
+                    .project {
+                        &__thumb {
+                            &::after {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+            &__thumb {
+                @extend %rel;
+                &::after {
+                    @extend %abs, %w-100, %h-100, %center;
+                    @include transition($transition);
+                    background: rgba($theme-color, $alpha: .9);
+                    opacity: 0;
+                }
+            }
+            &__content {
+                height: auto;
+                top: 50%;
+                background: transparent;
+                @extend %text-center;
+                @include transform(translateY(-50%));
+                h5 {
+                    @extend %mb-5;
+                    a {
+                        @extend %white-color;
+                    }
+                }
+                span {
+                    @extend %white-color, %d-block;
+                }
+                &::after {
+                    @extend %d-none;
+                }
+            }
+            &__icon {
+                @extend %mt-0, %mb-10;
+            }
+        }
+    }
+    &--details {
+        .project {
+            &__item {
+                @extend %p-30, %bg-white;
+            }
+            &__thumb {
+                @extend %mb-30;
+            }
+            &__content {
+                position: static;
+                opacity: 1;
+                background: transparent;
+                @extend %p-0;
+                &::after {
+                    @extend %d-none;
+                }
+            }
+            &__info {
+                border: 1px solid #F2F6F9;
+                @extend %mr-30, %bg-white;
+                margin-top: -50px;
+                @include breakpoint(lg) {
+                    margin-top: -125px;
+                }
+                .title {
+                    @extend %p-30;
+                    border-bottom: 1px solid #F2F6F9;
+                    h4 {
+                        @extend %mb-0, %theme-color;
+                    }
+                }
+                .content {
+                    ul {
+                        @extend %flex;
+                        li {
+                            padding: 15px 30px;
+                            border-bottom: 1px solid #F2F6F9;
+                            @extend %w-100;
+                            &:nth-last-child(1) {
+                                border-bottom: none;
+                            }
+                            @include breakpoint(sm) {
+                                width: 50%;
+                                &:nth-last-child(2) {
+                                    border-bottom: none;
+                                }
+                            }
+                            .name {
+                                @extend %theme-color, %text-capitalize;
+                            }
+                            .info {
+                                @extend %text-capitalize;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .swiper-slide.swiper-slide-duplicate {
+        display: none;
+    }
+}

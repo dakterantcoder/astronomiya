@@ -1,0 +1,139 @@
+.approach {
+    .section__header {
+        h2 {
+            @extend %white-color;
+        }
+    }
+    &__item {
+        padding: 60px 30px;
+        @extend %bg-white;
+    }
+    &__icon {
+        @extend %mb-30;
+    }
+    &__content {
+        .step {
+            padding: 5px 30px;
+            border-radius: 25px;
+            @include font-size(14px);
+            @extend %d-inline-block, %bg-theme, %white-color, %text-500, %mb-20;
+        }
+        h5 {
+            @extend %mb-10;
+        }
+        p {
+            @extend %mb-0;
+        }
+    }
+    &--two {
+        .approach {
+            &__item {
+                @extend %p-15;
+                &:hover {
+                    .approach {
+                        &__thumb {
+                            img {
+                                @include transform(scale(1.2));
+                            }
+                        }
+                        &__content {
+                            h5 {
+                                a {
+                                    @extend %theme-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &__thumb {
+                @extend %mb-10, %hidden;
+                img {
+                    @extend %w-100;
+                }
+            }
+            &__content {
+                @extend %p-15;
+                h5 {
+                    a {
+                        @extend %text-1;
+                    }
+                }
+            }
+        }
+    }
+    &--three {
+        .approach {
+            &__item {
+                @extend %rel;
+                &:hover {
+                    .radius-btn {
+                        opacity: 1;
+                    }
+                }
+                .radius-btn {
+                    width: 50px;
+                    height: 50px;
+                    line-height: 46px;
+                    left: 50%;
+                    bottom: -20px;
+                    font-size: 14px;
+                    opacity: 0;
+                    border: 2px solid $title-color;
+                    @include border-radius(100%);
+                    @include transform(translateX(-50%));
+                    @include transition($transition);
+                    @extend %text-center, %text-700, %bg-theme, %white-color, %d-inline-block, %abs;
+                }
+            }
+            &__thumb {}
+            &__content {
+                h5 {}
+            }
+        }
+    }
+    &--four {
+        .section__header {
+            h2 {
+                @extend %title-color;
+            }
+        }
+        .section__wrapper {
+            p {
+                a {
+                    @extend %theme-color;
+                }
+            }
+        }
+        .approach {
+            &__item {
+                @extend %p-15;
+                &:hover {
+                    .approach {
+                        &__thumb {
+                            img {
+                                @include transform(scale(1.2));
+                            }
+                        }
+                        &__content {
+                            h5 {
+                                a {
+                                    @extend %theme-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &__thumb {
+                @extend %mb-5, %hidden;
+                img {
+                    @extend %w-100;
+                }
+            }
+            &__content {
+                @extend %p-15;
+            }
+        }
+    }
+}

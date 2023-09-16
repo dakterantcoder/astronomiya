@@ -1,0 +1,150 @@
+.footer {
+    &__top {
+        border-bottom: 1px solid rgba($white-color, $alpha: .05);
+        padding-block: 80px;
+    }
+    &__middile {
+        border-bottom: 1px solid rgba($white-color, $alpha: .05);
+    }
+    &__bottom {
+        padding-block: 30px;
+        p {
+            @extend %mb-0, %white-color;
+            a {
+                @extend %white-color;
+                &:hover {
+                    @extend %theme-color;
+                }
+            }
+        }
+    }
+    &__title {
+        h5 {
+            @extend %white-color, %mb-30;
+        }
+    }
+    &__about {
+        img {
+            @extend %mb-15;
+        }
+        p {
+            @extend %white-color, %mb-30;
+            line-height: 32px;
+        }
+        h6 {
+            @extend %white-color;
+        }
+        ul {
+            @extend %mt-30;
+            li {
+                @extend %d-inline-block;
+                padding: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                @include border-radius(2px);
+                &:hover {
+                    span {
+                        display: inherit;
+                        @include breakpoint(max-xl) {
+                            display: none;
+                        }
+                    }
+                }
+                a {
+                    @extend %d-inline-block;
+                }
+                i {
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    border-radius: 100%;
+                    // margin: 2px;
+                    @extend %bg-theme, %white-color, %d-inline-block, %text-center;
+                }
+                span {
+                    @extend %d-none, %white-color, %text-capitalize;
+                    padding-inline: 10px;
+                    @include transition($transition);
+                }
+            }
+        }
+    }
+    &__post {
+        &--thumb {
+            width: 90px;
+            height: 90px;
+            img {
+                @extend %w-100, %h-100;
+                object-fit: cover;
+            }
+        }
+        &--content {
+            width: calc(100% - 90px);
+            @extend %pl-15;
+            h6 {
+                font-size: 16px;
+                a {
+                    @extend %white-color, %text-2;
+                    line-height: 1.5;
+                }
+            }
+            span {
+                @extend %theme-color, %d-inline-block;
+            }
+        }
+        ul {
+            li {
+                @extend %flex, %align-items-center;
+                padding-block: 15px;
+                border-bottom: 1px solid rgba($white-color, $alpha: .1);
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+    &__gallery {
+        ul {
+            @extend %flex;
+            gap: 15px;
+            li {
+                @extend %d-inline-block, %hidden;
+                width: calc(100% / 3 - 15px);
+                a {
+                    @extend %d-block;
+                    img {
+                        @extend %w-100;
+                    }
+                }
+                &:hover {
+                    a {
+                        img {
+                            @include transform(scale(1.2));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.info {
+    &__item {
+        padding: 20px 30px;
+        border: 1px dashed $theme-color;
+        @extend %flex, %align-items-center;
+        @include border-radius(2px);
+    }
+    &__icon {
+        width: 50px;
+    }
+    &__content {
+        width: calc(100% - 50px);
+        @extend %pl-20;
+        p {
+            @extend %mb-5, %white-color;
+        }
+        h6 {
+            @extend %mb-0, %white-color, %text-lowercase;
+        }
+    }
+}

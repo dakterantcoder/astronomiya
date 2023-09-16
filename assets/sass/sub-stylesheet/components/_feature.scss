@@ -1,0 +1,120 @@
+.feature {
+    &--one {
+        .feature {
+            &__item {
+                &:hover {
+
+                }
+            }
+        }
+    }
+    &--two {
+        .feature {
+            &__item {
+                padding: 60px 20px;
+                @include breakpoint(xxl) {
+                    padding: 60px 30px;
+                }
+            }
+        }
+    }
+    &--three {
+        &.bg-title {
+            .feature {
+                &__content {
+                    h5 {
+                        @extend %title-color, %text-1;
+                    }
+                    p {
+                        @extend %desc-color;
+                    }
+                }
+            }
+        }
+        .feature {
+            &__item {
+                padding: 60px 30px;
+                &:hover {
+                    @include transform(translateY(-10px));
+                    .feature {
+                        &__content {
+                            h5 {
+                                a {
+                                    @extend %theme-color;
+                                }
+                            }
+                            .text-btn {
+                                @extend %theme-color;
+                            }
+                        }
+                    }
+                }
+            }
+            &__content {
+                .text-btn {
+                    @extend %mt-20;
+                }
+            }
+        }
+    }
+    &--four {
+        .feature {
+            &__item {
+                @extend %p-15;
+            }
+            &__thumb {
+                @extend %mb-15;
+                img {
+                    @extend %w-100;
+                }
+            }
+            &__content {
+                @extend %p-15;
+                h5 {
+                    @extend %mb-10, %text-1;
+                    @include font-size(24px);
+                }
+            }
+        }
+    }
+    &__area {
+        margin-top: -100px;
+        z-index: 99;
+        @extend %rel;
+    }
+    &__item {
+        padding: 60px 30px;
+        @extend %bg-white, %rel;
+        @include transition($transition);
+        // &::after {
+        //     @extend %abs, %w-100, %bg-theme;
+        //     height: 4px;
+        //     left: 0;
+        //     bottom: 0;
+        //     opacity: 0;
+        //     @include transition(all .3s ease);
+        // }
+        &:hover {
+            box-shadow: 0px 0px 10px rgba(85, 85, 85, 0.1);
+            // &::after {
+            //     opacity: 1;
+            // }
+            .feature {
+                &__content {
+                    h5 {
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+    &__thumb {
+        @extend %mb-30;
+    }
+    &__content {
+        h5 {}
+        p {
+            @extend %mb-0;
+        }
+    }
+}

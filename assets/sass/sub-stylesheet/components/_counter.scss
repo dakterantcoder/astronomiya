@@ -1,0 +1,76 @@
+.counter {
+    &__area {
+        margin-top: -40px;
+    }
+    &__item {
+        @extend %bg-theme, %text-center, %p-30;
+        border: 1px solid rgba($white-color, $alpha: .1);
+    }
+    &__count {
+        h2 {
+            @extend %white-color, %mb-10;
+        }
+    }
+    &__title {
+        h6 {
+            @extend %text-400;
+        }
+    }
+    &--one {
+        .section__header {
+            h2 {
+                @extend %white-color;
+            }
+        }
+        .counter {
+            &__item {
+                background: rgba($title-color, $alpha: .8);
+                padding: 60px 30px;
+                border: 2px solid rgba($white-color, $alpha: .2);
+            }
+            &__thumb {
+                @extend %mb-25;
+            }
+            &__count {
+                h3 {
+                    @extend %theme-color, %mb-25, %pb-20, %rel;
+                    &::after {
+                        @extend %abs, %bg-theme;
+                        width: 60px;
+                        height: 1px;
+                        bottom: 0;
+                        left: 50%;
+                        @include transform(translateX(-50%));
+                        @include border-radius(2px);
+                    }
+                }
+            }
+            &__title {
+                h6 {
+                    @extend %white-color, %mb-0;
+                }
+            }
+        }
+    }
+    &--two {
+        margin-top: -40px;
+        @include breakpoint(lg) {
+            margin-top: -100px;
+        }
+        .counter {
+            &__item {
+                padding: 60px 30px;
+            }
+            &__count {
+                h3 {
+                    @extend %white-color;
+                }
+            }
+            &__title {
+                h6 {
+                    @extend %white-color;
+                }
+            }
+        }
+    }
+}
